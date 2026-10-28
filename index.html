@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cerynex</title>
+<meta name="description" content="Cerynex — Türk yayıncıları yurt dışındaki takımlarla buluşturup dünya sahnesine taşıyan Türkiye merkezli yapı.">
+<meta property="og:title" content="Cerynex — Türk yayıncıları dünya sahnesine taşıyoruz">
+<meta property="og:description" content="Türk yayıncıları yurt dışındaki takımlarla buluşturan Türkiye merkezli yapı. Taking Turkish streamers to the world stage.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cerynex.net/">
+<meta property="og:site_name" content="Cerynex">
+<meta property="og:image" content="https://www.cerynex.net/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.cerynex.net/og.png">
+<meta name="theme-color" content="#08080c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308080c'/%3E%3Cpath d='M16 4l10 6v12l-10 6-10-6V10z' fill='none' stroke='%23d4ff3a' stroke-width='2.4'/%3E%3Cpath d='M19.8 12.8A5 5 0 1 0 19.8 19.2' fill='none' stroke='%23f3f3f6' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08080c;--surface:#111118;--surface-2:#16161f;--line:#24242f;
+  --text:#f3f3f6;--muted:#9b9bad;--accent:#d4ff3a;--accent-ink:#0b0b0b;
+  --display:'Unbounded',system-ui,sans-serif;--body:'Manrope',system-ui,sans-serif;
+  --r:18px;--max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+@media(min-width:760px){.wrap{padding:0 32px}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;letter-spacing:.08em;font-size:17px}
+.logo svg{width:26px;height:26px}
+.links{display:none;gap:28px;font-size:14px;color:var(--muted);font-weight:600}
+.links a:hover{color:var(--text)}
+@media(min-width:860px){.links{display:flex}}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{background:none;border:0;color:var(--muted);font:700 12px var(--body);padding:6px 10px;border-radius:999px;cursor:pointer;letter-spacing:.05em}
+.lang button.on{background:var(--text);color:var(--bg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;padding:14px 22px;border-radius:999px;transition:transform .15s,background .15s;border:1px solid transparent;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--muted)}
+.btn-sm{padding:9px 16px;font-size:13px}
+.nav-cta{display:none}
+@media(min-width:560px){.nav-cta{display:inline-flex}}
+
+/* HERO */
+.hero{position:relative;padding:72px 0 56px;overflow:hidden}
+@media(min-width:760px){.hero{padding:120px 0 96px}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000 30%,transparent 75%);opacity:.55;pointer-events:none}
+.glow{position:absolute;width:520px;height:520px;right:-160px;top:-120px;background:radial-gradient(circle,rgba(212,255,58,.18),transparent 65%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(212,255,58,.3);padding:7px 14px;border-radius:999px;margin-bottom:24px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,8.5vw,84px);line-height:1.02;letter-spacing:-.02em;max-width:14ch}
+h1 .acc{color:var(--accent);display:block}
+.lead{margin-top:24px;font-size:clamp(16px,2.2vw,19px);color:var(--muted);max-width:56ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+
+/* TICKER */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--surface)}
+.track{display:flex;gap:40px;padding:16px 0;width:max-content;animation:scroll 28s linear infinite;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.12em;color:var(--muted)}
+.track span{display:flex;align-items:center;gap:40px}
+.track i{color:var(--accent);font-style:normal}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.track,.dot{animation:none}}
+
+/* SECTIONS */
+section{padding:80px 0}
+@media(min-width:760px){section{padding:112px 0}}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,5vw,44px);line-height:1.1;letter-spacing:-.015em;max-width:20ch}
+.sub{color:var(--muted);margin-top:16px;max-width:58ch;font-size:17px}
+
+.steps{display:grid;gap:16px;margin-top:48px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative}
+.num{font-family:var(--display);font-weight:800;font-size:44px;color:transparent;-webkit-text-stroke:1px var(--line);line-height:1;margin-bottom:20px}
+.step h3,.card h3{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.3}
+.step p,.card p{color:var(--muted);font-size:15px}
+
+.split{display:grid;gap:16px;margin-top:48px}
+@media(min-width:860px){.split{grid-template-columns:1fr 1fr}.split .panel:last-child{grid-column:1/-1}}
+@media(min-width:1100px){.split{grid-template-columns:repeat(3,1fr)}.split .panel:last-child{grid-column:auto}.panel{padding:28px}}
+.panel{display:flex;flex-direction:column}.panel .btn{align-self:flex-start;margin-top:auto;padding-top:14px}
+.panel .list{margin-bottom:28px}
+.panel .tag{align-self:flex-start}
+.hero-alt{display:inline-block;margin-top:20px;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2px}
+.hero-alt:hover{color:var(--text)}
+.panel{border:1px solid var(--line);border-radius:22px;padding:32px;background:linear-gradient(180deg,var(--surface-2),var(--surface))}
+.panel.hl{border-color:rgba(212,255,58,.35);background:linear-gradient(180deg,rgba(212,255,58,.07),var(--surface) 55%)}
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--line);color:var(--text);margin-bottom:18px}
+.panel.hl .tag{background:var(--accent);color:var(--accent-ink)}
+.panel h3{font-family:var(--display);font-size:clamp(22px,3.5vw,28px);font-weight:700;line-height:1.15;margin-bottom:22px}
+.list{list-style:none;display:grid;gap:14px}
+.list li{display:flex;gap:12px;font-size:15px;color:#d6d6de}
+.list li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:6px;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0b' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.panel .btn{margin-top:28px}
+
+/* RULE BANNER */
+.rule{background:var(--accent);color:var(--accent-ink);border-radius:26px;padding:48px 28px;text-align:center;position:relative;overflow:hidden}
+@media(min-width:760px){.rule{padding:72px 48px}}
+.rule .k{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+.rule h2{margin:14px auto 0;max-width:none;font-size:clamp(30px,7vw,64px);font-weight:800}
+.rule p{max-width:52ch;margin:18px auto 0;font-weight:600;opacity:.8}
+
+/* EXPANSION */
+.countries{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:44px}
+@media(min-width:760px){.countries{grid-template-columns:repeat(4,1fr);gap:16px}}
+.c{border:1px solid var(--line);border-radius:var(--r);padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;background:var(--surface)}
+.c .code{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:.04em}
+.c .st{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.c.home{border-color:rgba(212,255,58,.4)}
+.c.home .st{color:var(--accent)}
+.c.lock .code{color:transparent;-webkit-text-stroke:1px #3a3a48;filter:blur(.4px)}
+
+/* EVENTS */
+.cards{display:grid;gap:16px;margin-top:44px}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{border:1px solid var(--line);border-radius:var(--r);padding:28px;background:var(--surface)}
+.ico{width:44px;height:44px;border-radius:12px;background:rgba(212,255,58,.1);display:grid;place-items:center;margin-bottom:20px}
+.ico svg{width:22px;height:22px;stroke:var(--accent)}
+
+/* CONTACT */
+.contact{border:1px solid var(--line);border-radius:26px;padding:40px 24px;background:radial-gradient(ellipse at top right,rgba(212,255,58,.1),transparent 55%),var(--surface);text-align:center}
+@media(min-width:760px){.contact{padding:72px 48px}}
+.contact h2{margin:0 auto}
+.contact .sub{margin:16px auto 0}
+.contact .cta-row{justify-content:center}
+.mail{display:inline-block;margin-top:28px;font-weight:700;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2px;word-break:break-all}
+.mail:hover{color:var(--text)}
+
+/* PARTNERS */
+.partners{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:44px}
+@media(min-width:760px){.partners{grid-template-columns:repeat(4,1fr);gap:16px}}
+.p-slot{aspect-ratio:16/9;border:1px dashed #33333f;border-radius:var(--r);display:grid;place-items:center;background:var(--surface);color:#4a4a58;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.p-slot svg{width:22px;height:22px;stroke:#4a4a58;display:block;margin:0 auto 8px}
+.p-slot img{max-width:70%;max-height:60%;object-fit:contain}
+.p-slot.live{border-style:solid;border-color:var(--line)}
+
+/* FOUNDER */
+.founder{display:grid;gap:28px;align-items:center;border:1px solid var(--line);border-radius:26px;padding:32px 24px;background:var(--surface)}
+@media(min-width:860px){.founder{grid-template-columns:220px 1fr;gap:48px;padding:56px}}
+.avatar{width:120px;height:120px;border-radius:28px;background:linear-gradient(135deg,var(--accent),#7fa80f);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:.02em}
+@media(min-width:860px){.avatar{width:220px;height:220px;border-radius:36px;font-size:68px}}
+.founder blockquote{font-family:var(--display);font-weight:500;font-size:clamp(17px,2.1vw,22px);line-height:1.5;letter-spacing:-.01em}
+.founder blockquote::before{content:"“";display:block;font-size:64px;line-height:.6;color:var(--accent);margin-bottom:10px}
+.f-name{margin-top:24px;font-weight:800;font-size:16px}
+.f-role{color:var(--muted);font-size:14px}
+
+/* FORM */
+.form-wrap{display:grid;gap:40px}
+@media(min-width:960px){.form-wrap{grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}}
+.form-card{border:1px solid var(--line);border-radius:26px;padding:24px;background:radial-gradient(ellipse at top right,rgba(212,255,58,.08),transparent 55%),var(--surface)}
+@media(min-width:760px){.form-card{padding:40px}}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:5px;border:1px solid var(--line);border-radius:999px;margin-bottom:24px;background:var(--bg)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{text-align:center;padding:11px 8px;border-radius:999px;font-weight:700;font-size:14px;color:var(--muted);cursor:pointer;transition:.15s}
+.seg input:checked+label{background:var(--accent);color:var(--accent-ink)}
+.seg input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+.fields{display:grid;gap:14px}
+@media(min-width:620px){.fields{grid-template-columns:1fr 1fr}}
+.f{display:flex;flex-direction:column;gap:7px}
+.f.full{grid-column:1/-1}
+.f label{font-size:13px;font-weight:700;color:#cfcfd8}
+.f label .opt{color:var(--muted);font-weight:500}
+.f input,.f select,.f textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--text);font:500 16px var(--body);padding:13px 14px;outline:none;transition:border-color .15s}
+.f textarea{min-height:110px;resize:vertical}
+.f select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239b9bad' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:40px}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--accent)}
+.f input::placeholder,.f textarea::placeholder{color:#5c5c6c}
+.grp{display:contents}
+.grp[hidden]{display:none}
+.consent{display:flex;gap:12px;align-items:flex-start;margin-top:20px;font-size:13px;color:var(--muted);line-height:1.5}
+.consent input{flex:none;width:20px;height:20px;margin-top:1px;accent-color:var(--accent)}
+.consent button{background:none;border:0;color:var(--text);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+.submit{width:100%;margin-top:22px;border:0;cursor:pointer;font-family:var(--body)}
+.submit[disabled]{opacity:.6;cursor:wait}
+.form-msg{margin-top:16px;font-size:14px;font-weight:600;text-align:center}
+.form-msg.ok{color:var(--accent)}
+.form-msg.err{color:#ff8a8a}
+.done{text-align:center;padding:40px 8px}
+.done .big{font-family:var(--display);font-size:26px;font-weight:700;margin:18px 0 8px}
+.done p{color:var(--muted)}
+.check{width:64px;height:64px;border-radius:50%;background:var(--accent);display:grid;place-items:center;margin:0 auto}
+.side .mail{margin-top:24px}
+.side-list{list-style:none;display:grid;gap:14px;margin-top:28px}
+.side-list li{display:flex;gap:14px;color:#d6d6de;font-size:15px}
+.side-list b{font-family:var(--display);color:var(--accent);font-size:14px;min-width:26px}
+
+/* KVKK MODAL */
+dialog{margin:auto;max-width:640px;width:calc(100% - 32px);max-height:85vh;border:1px solid var(--line);border-radius:22px;background:var(--surface);color:var(--text);padding:0}
+dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
+.dlg-in{padding:28px;overflow:auto;max-height:85vh}
+.dlg-in h3{font-family:var(--display);font-size:20px;margin-bottom:16px}
+.dlg-in h4{font-size:14px;margin:18px 0 6px}
+.dlg-in p,.dlg-in li{color:#c4c4cf;font-size:14px}
+.dlg-in ul{padding-left:18px;display:grid;gap:4px}
+.dlg-in .btn{margin-top:24px}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:13px}
+.f-in{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.f-in a:hover{color:var(--text)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo" aria-label="Cerynex">
+      <svg viewBox="0 0 32 32" fill="none"><path d="M16 2l12 7v14l-12 7-12-7V9z" stroke="#d4ff3a" stroke-width="2.4"/><path d="M20.5 12.2A6 6 0 1 0 20.5 19.8" stroke="#f3f3f6" stroke-width="2.6" stroke-linecap="round"/></svg>
+      CERYNEX
+    </a>
+    <div class="links">
+      <a href="#model" data-en="How it works">Model</a>
+      <a href="#yayincilar" data-en="Streamers">Yayıncılar</a>
+      <a href="#takimlar" data-en="Teams">Takımlar</a>
+      <a href="#menajerler" data-en="Managers">Menajerler</a>
+      <a href="#etkinlikler" data-en="Events">Etkinlikler</a>
+      <a href="#kurucu" data-en="Founder">Kurucu</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Dil / Language">
+        <button type="button" data-l="tr" class="on">TR</button>
+        <button type="button" data-l="en">EN</button>
+      </div>
+      <a href="#basvuru" class="btn btn-accent btn-sm nav-cta" data-en="Apply">Başvur</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="grid-bg"></div><div class="glow"></div>
+  <div class="wrap" style="position:relative">
+    <div class="eyebrow"><span class="dot"></span><span data-en="Türkiye → World">Türkiye → Dünya</span></div>
+    <h1><span data-en="Taking Turkish streamers">Türk yayıncıları</span><span class="acc" data-en="to the world stage.">dünya sahnesine taşıyoruz.</span></h1>
+    <p class="lead" data-en="Cerynex is a Türkiye-based home for streamers. We bring Turkish creators into our roster and grow them by giving them the chance to create content with teams abroad.">Cerynex, Türkiye merkezli bir yayıncı yapısıdır. Türk yayıncıları bünyemize katar, yurt dışındaki takımlarla içerik üretme fırsatı sunarak onları büyütürüz.</p>
+    <div class="cta-row">
+      <a href="#basvuru" data-pick="yayinci" class="btn btn-accent" data-en="I'm a streamer →">Yayıncıyım →</a>
+      <a href="#basvuru" data-pick="takim" class="btn btn-ghost" data-en="We're a team">Takımız</a>
+    </div>
+    <a href="#menajerler" class="hero-alt" data-en="Manager or agency abroad? Create content in Türkiye →">Yurt dışında menajer veya ajans mısınız? Türkiye'de içerik üretin →</a>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>STREAM <i>✦</i> CONTENT <i>✦</i> GLOBAL TEAMS <i>✦</i> SHOWMATCH <i>✦</i> TÜRKİYE <i>✦</i> CREATORS <i>✦</i></span>
+    <span>STREAM <i>✦</i> CONTENT <i>✦</i> GLOBAL TEAMS <i>✦</i> SHOWMATCH <i>✦</i> TÜRKİYE <i>✦</i> CREATORS <i>✦</i></span>
+  </div>
+</div>
+
+<section id="model">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker" data-en="How it works">Nasıl çalışıyor</div>
+      <h2 data-en="One bridge between Turkish creators and global teams.">Türk yayıncılar ile dünya takımları arasında tek köprü.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="num">01</div>
+        <h3 data-en="Streamers join Cerynex">Yayıncılar Cerynex'e katılır</h3>
+        <p data-en="Turkish streamers and creators become part of the Cerynex roster.">Türk yayıncılar ve içerik üreticileri Cerynex kadrosuna dahil olur.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num">02</div>
+        <h3 data-en="We match them with teams">Takımlarla eşleştiririz</h3>
+        <p data-en="Teams abroad choose the streamers they want to work with. Cerynex handles the rest.">Yurt dışındaki takımlar çalışmak istedikleri yayıncıları seçer, gerisini Cerynex yönetir.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num">03</div>
+        <h3 data-en="Content is created, everyone grows">İçerik üretilir, herkes büyür</h3>
+        <p data-en="Approved content reaches new audiences — for the streamer and for the team.">Onaylanan içerikler hem yayıncıyı hem takımı yeni kitlelere ulaştırır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="yayincilar" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="panel hl reveal">
+        <span class="tag" data-en="For streamers">Yayıncılar için</span>
+        <h3 data-en="Your next step is beyond the border.">Bir sonraki adımın sınırların ötesinde.</h3>
+        <ul class="list">
+          <li data-en="Create content with international teams">Yurt dışındaki takımlarla içerik üretme fırsatı</li>
+          <li data-en="Reach new audiences outside Türkiye">Türkiye dışında yeni kitlelere ulaşma</li>
+          <li data-en="Events, showmatches and giveaways">Etkinlikler, showmatch'ler ve çekilişler</li>
+          <li data-en="A team behind you that handles the talks">Görüşmeleri senin yerine yürüten bir ekip</li>
+        </ul>
+        <a class="btn btn-accent" data-pick="yayinci" href="#basvuru" data-en="Apply to join →">Kadroya başvur →</a>
+      </div>
+      <div class="panel reveal" id="takimlar">
+        <span class="tag" data-en="For teams">Takımlar için</span>
+        <h3 data-en="Reach the Turkish audience — on your terms.">Türk izleyiciye ulaşın, kendi şartlarınızla.</h3>
+        <ul class="list">
+          <li data-en="Work only with the streamers you choose">Sadece seçtiğiniz yayıncılarla çalışın</li>
+          <li data-en="Every piece of content needs your approval">Her içerik sizin onayınızdan geçer</li>
+          <li data-en="Flexible, per-event agreements — no fixed fee">Etkinlik bazlı esnek anlaşma, sabit ücret yok</li>
+          <li data-en="Jerseys or giveaway gear are welcome, never required">Forma veya çekiliş ekipmanı isteğe bağlı, zorunlu değil</li>
+        </ul>
+        <a class="btn btn-ghost" data-pick="takim" href="#basvuru" data-en="Talk to us →">Bizimle görüşün →</a>
+      </div>
+      <div class="panel reveal" id="menajerler">
+        <span class="tag" data-en="For managers & agencies">Menajer ve ajanslar için</span>
+        <h3 data-en="Want to create content in Türkiye?">Türkiye'de içerik mi üretmek istiyorsunuz?</h3>
+        <ul class="list">
+          <li data-en="Bring your talent to the Turkish audience">Temsil ettiğiniz isimleri Türk izleyiciyle buluşturun</li>
+          <li data-en="Joint streams and content with Turkish streamers">Türk yayıncılarla ortak yayın ve içerikler</li>
+          <li data-en="Cerynex handles local coordination and communication">Yerel organizasyon ve iletişimi Cerynex yürütür</li>
+          <li data-en="Flexible, per-project agreements">Proje bazlı esnek anlaşma</li>
+        </ul>
+        <a class="btn btn-ghost" data-pick="menajer" href="#basvuru" data-en="Plan a project →">Proje planlayalım →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rule reveal">
+      <div class="k" data-en="Our core rule">Temel kuralımız</div>
+      <h2 data-en="No approval, no content.">Onay yoksa içerik yok.</h2>
+      <p data-en="Every piece of content and activity is published only with the team's approval. That's how we build trust.">Her içerik ve etkinlik yalnızca takımın onayıyla yayınlanır. Güveni böyle inşa ediyoruz.</p>
+    </div>
+  </div>
+</section>
+
+<section id="etkinlikler" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker" data-en="What we do">Neler yapıyoruz</div>
+      <h2 data-en="Content and events that cross borders.">Sınır tanımayan içerik ve etkinlikler.</h2>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></div>
+        <h3 data-en="Team content">Takım içerikleri</h3>
+        <p data-en="Turkish streamers creating content together with teams abroad.">Türk yayıncıların yurt dışı takımlarla birlikte ürettiği içerikler.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1 0-4h2M18 9h2a2 2 0 0 0 0-4h-2"/><path d="M6 3h12v7a6 6 0 0 1-12 0z"/><path d="M12 16v4M8 21h8"/></svg></div>
+        <h3 data-en="Showmatches">Showmatch'ler</h3>
+        <p data-en="5v5 matches bringing players from Türkiye and abroad together. Coming soon.">Türkiye'den ve yurt dışından oyuncuları aynı maçta buluşturan 5v5 etkinlikler. Yakında.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+        <h3 data-en="Giveaways">Çekilişler</h3>
+        <p data-en="Giveaways for viewers in Türkiye and partner countries.">Türkiye'deki ve partner ülkelerdeki izleyicilere özel çekilişler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partnerler" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker" data-en="Partners">Partnerler</div>
+      <h2 class="p-empty" data-en="Our first partnerships are on the way.">İlk iş birliklerimiz yolda.</h2>
+      <h2 class="p-full" hidden data-en="Teams we work with.">Birlikte çalıştığımız takımlar.</h2>
+      <p class="sub p-empty" data-en="Every new partnership will be announced here first.">Her yeni iş birliği ilk olarak burada duyurulacak.</p>
+    </div>
+    <div class="partners" id="partnerGrid"></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker" data-en="Expansion">Genişleme</div>
+      <h2 data-en="Growing country by country.">Ülke ülke büyüyoruz.</h2>
+      <p class="sub" data-en="We start from Türkiye and announce every new country one by one. Stay tuned for the next one.">Türkiye'den başlıyor, her yeni ülkeyi tek tek duyuruyoruz. Sıradaki için takipte kalın.</p>
+    </div>
+    <div class="countries">
+      <div class="c home reveal"><div class="code">TR</div><div class="st" data-en="Home base">Merkez</div></div>
+      <div class="c lock reveal"><div class="code">??</div><div class="st" data-en="Coming soon">Yakında</div></div>
+      <div class="c lock reveal"><div class="code">??</div><div class="st" data-en="Coming soon">Yakında</div></div>
+      <div class="c lock reveal"><div class="code">??</div><div class="st" data-en="Coming soon">Yakında</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="kurucu" style="padding-top:0">
+  <div class="wrap">
+    <div class="founder reveal">
+      <div class="avatar" aria-hidden="true">NCD</div>
+      <div>
+        <div class="kicker" data-en="Founder">Kurucu</div>
+        <blockquote data-en="Türkiye has a large and deeply engaged streaming audience, yet much of its talent never reaches beyond its borders. Cerynex exists to close that gap: a structure that connects Turkish streamers with international teams, built on transparency and approval at every step. Over the past year and a half, our conversations with streamers, managers and esports organizations across many countries have made one thing clear: this bridge is needed.">Türkiye güçlü ve son derece bağlı bir yayıncı ve izleyici kitlesine sahip, ancak bu yeteneğin büyük kısmı sınırların ötesine ulaşamıyor. Cerynex bu boşluğu kapatmak için var: Türk yayıncıları uluslararası takımlarla buluşturan, her adımında şeffaflığı ve karşılıklı onayı esas alan bir yapı. Son 1,5 yılda farklı ülkelerden yayıncılar, menajerler ve e-spor organizasyonlarıyla yürüttüğümüz görüşmeler tek bir şeyi net biçimde gösterdi: Bu köprüye ihtiyaç var.</blockquote>
+        <div class="f-name">Necat Can Dost</div>
+        <div class="f-role" data-en="Founder, Cerynex">Kurucu, Cerynex</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="basvuru" style="padding-top:0">
+  <div class="wrap form-wrap">
+    <div class="side reveal">
+      <div class="kicker" data-en="Apply">Başvuru</div>
+      <h2 data-en="Let's build it together.">Birlikte büyütelim.</h2>
+      <p class="sub" data-en="Streamer, team or manager — fill in the form and we'll get back to you.">Yayıncı, takım ya da menajer; formu doldur, sana dönüş yapalım.</p>
+      <ul class="side-list">
+        <li><b>01</b><span data-en="Fill in the form (takes 1 minute)">Formu doldur (1 dakika sürer)</span></li>
+        <li><b>02</b><span data-en="We review your application">Başvurunu inceleriz</span></li>
+        <li><b>03</b><span data-en="We contact you for a meeting">Görüşme için seninle iletişime geçeriz</span></li>
+      </ul>
+      <a class="mail" href="mailto:necatcd@gmail.com">necatcd@gmail.com</a>
+    </div>
+
+    <div class="form-card reveal">
+      <form id="cxForm" name="basvuru" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="basvuru">
+        <p hidden><label>Bot <input name="bot-field"></label></p>
+
+        <div class="seg" role="radiogroup">
+          <input type="radio" name="tur" id="t-y" value="Yayıncı" checked><label for="t-y" data-en="Streamer">Yayıncı</label>
+          <input type="radio" name="tur" id="t-t" value="Takım"><label for="t-t" data-en="Team">Takım</label>
+          <input type="radio" name="tur" id="t-m" value="Menajer"><label for="t-m" data-en="Manager">Menajer</label>
+        </div>
+
+        <div class="fields">
+          <div class="f"><label for="ad" data-en="Full name">Ad Soyad</label><input id="ad" name="ad" autocomplete="name" required></div>
+          <div class="f"><label for="eposta" data-en="Email">E-posta</label><input id="eposta" name="eposta" type="email" autocomplete="email" required></div>
+
+          <div class="grp" data-grp="yayinci">
+            <div class="f"><label for="platform" data-en="Main platform">Ana platform</label>
+              <select id="platform" name="platform" data-req>
+                <option value="" data-en="Select">Seç</option>
+                <option value="Kick">Kick</option><option value="Twitch">Twitch</option><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option>
+                <option value="Diğer" data-en="Other">Diğer</option>
+              </select></div>
+            <div class="f"><label for="takipci" data-en="Followers">Takipçi sayısı</label>
+              <select id="takipci" name="takipci" data-req>
+                <option value="" data-en="Select">Seç</option>
+                <option value="0-10K">0 – 10K</option><option value="10K-50K">10K – 50K</option><option value="50K-250K">50K – 250K</option><option value="250K+">250K+</option>
+              </select></div>
+            <div class="f"><label for="kanal" data-en="Channel link">Kanal linki</label><input id="kanal" name="kanal" type="url" inputmode="url" placeholder="https://" data-req></div>
+            <div class="f"><label for="icerik" data-en="Main game / content">Ağırlıklı oyun / içerik</label><input id="icerik" name="icerik"></div>
+          </div>
+
+          <div class="grp" data-grp="takim" hidden>
+            <div class="f"><label for="takim" data-en="Team / organization">Takım / organizasyon</label><input id="takim" name="takim" data-req></div>
+            <div class="f"><label for="ulke" data-en="Country">Ülke</label><input id="ulke" name="ulke" data-req></div>
+            <div class="f full"><label for="rol" data-en="Your role">Rolünüz</label><input id="rol" name="rol"></div>
+          </div>
+
+          <div class="grp" data-grp="menajer" hidden>
+            <div class="f"><label for="ajans" data-en="Agency / company">Ajans / şirket</label><input id="ajans" name="ajans" data-req></div>
+            <div class="f"><label for="m-ulke" data-en="Country">Ülke</label><input id="m-ulke" name="menajer_ulke" data-req></div>
+            <div class="f full"><label for="temsil" data-en="Who do you represent?">Kimleri temsil ediyorsunuz?</label><input id="temsil" name="temsil" data-en-ph="Streamers, players, creators…" placeholder="Yayıncı, oyuncu, içerik üreticisi…"></div>
+            <div class="f full"><label for="proje" data-en="Project type">Proje türü</label>
+              <select id="proje" name="proje_turu" data-req>
+                <option value="" data-en="Select">Seç</option>
+                <option value="Ortak yayın / içerik" data-en="Joint stream / content">Ortak yayın / içerik</option>
+                <option value="Etkinlik / showmatch" data-en="Event / showmatch">Etkinlik / showmatch</option>
+                <option value="Marka / sponsor içeriği" data-en="Brand / sponsored content">Marka / sponsor içeriği</option>
+                <option value="Diğer" data-en="Other">Diğer</option>
+              </select></div>
+          </div>
+
+          <div class="f full"><label for="mesaj"><span data-en="Message">Mesaj</span> <span class="opt" data-en="(optional)">(isteğe bağlı)</span></label><textarea id="mesaj" name="mesaj"></textarea></div>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="kvkk" value="Onaylandı" id="kvkk" required>
+          <span><button type="button" id="kvkkOpen" data-en="I have read the privacy notice">Aydınlatma metnini</button> <span data-en="and agree to my data being used to process my application.">okudum, verilerimin başvurumun değerlendirilmesi için kullanılmasını kabul ediyorum.</span></span>
+        </label>
+
+        <button class="btn btn-accent submit" type="submit" data-en="Send application →">Başvuruyu gönder →</button>
+        <div class="form-msg" id="formMsg" role="status"></div>
+      </form>
+
+      <div class="done" id="formDone" hidden>
+        <div class="check"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+        <div class="big" data-en="Application received!">Başvurun alındı!</div>
+        <p data-en="We'll get back to you as soon as possible.">En kısa sürede sana dönüş yapacağız.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dialog id="kvkkDlg">
+  <div class="dlg-in">
+    <h3 data-en="Privacy Notice">KVKK Aydınlatma Metni</h3>
+    <p data-en="This notice explains how personal data submitted through the application form on cerynex.net is processed under Turkish Law No. 6698 on the Protection of Personal Data (KVKK).">Bu metin, cerynex.net üzerindeki başvuru formu ile paylaşılan kişisel verilerin 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında nasıl işlendiğini açıklar.</p>
+    <h4 data-en="Data controller">Veri sorumlusu</h4>
+    <p data-en="Cerynex – Necat Can Dost · necatcd@gmail.com">Cerynex – Necat Can Dost · necatcd@gmail.com</p>
+    <h4 data-en="Data we collect">İşlenen veriler</h4>
+    <p data-en="Name, email, channel/platform details, follower range, team/organization or agency name, country, role, represented talent, project type and your message.">Ad soyad, e-posta, kanal ve platform bilgileri, takipçi aralığı, takım/organizasyon veya ajans adı, ülke, rol, temsil edilen isimler, proje türü ve mesajın.</p>
+    <h4 data-en="Purpose and legal basis">Amaç ve hukuki sebep</h4>
+    <p data-en="Your data is processed only to review your application and contact you, based on your explicit consent and on taking steps prior to a possible agreement.">Verilerin yalnızca başvurunu değerlendirmek ve seninle iletişime geçmek amacıyla; açık rızan ve olası bir sözleşmenin kurulmasına yönelik adımlar hukuki sebebine dayanarak işlenir.</p>
+    <h4 data-en="Transfer and storage">Aktarım ve saklama</h4>
+    <p data-en="Form submissions are stored on the hosting provider's servers, which may be located abroad. Data is not shared with third parties for marketing and is deleted when no longer needed.">Form kayıtları, sitenin barındırma hizmeti sağlayıcısının yurt dışında bulunabilen sunucularında saklanır. Verilerin pazarlama amacıyla üçüncü kişilerle paylaşılmaz ve amaç ortadan kalktığında silinir.</p>
+    <h4 data-en="Your rights">Hakların</h4>
+    <p data-en="Under Article 11 of KVKK you may request information about, correction or deletion of your data by emailing necatcd@gmail.com.">KVKK'nın 11. maddesi kapsamındaki haklarını (bilgi talep etme, düzeltme, silme vb.) necatcd@gmail.com adresine yazarak kullanabilirsin.</p>
+    <button type="button" class="btn btn-accent" id="kvkkClose" data-en="Close">Kapat</button>
+  </div>
+</dialog>
+
+<footer>
+  <div class="wrap f-in">
+    <span>© 2026 Cerynex. <span data-en="All rights reserved.">Tüm hakları saklıdır.</span></span>
+    <a href="https://instagram.com/canndst" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* PARTNERLER: anlaşma imzalanınca buraya ekle, bölüm otomatik açılır.
+     Örnek: {name:'BetBoom Team', logo:'logos/betboom.png'} */
+  var PARTNERS=[];
+
+  var grid=document.getElementById('partnerGrid');
+  if(PARTNERS.length){
+    [].forEach.call(document.querySelectorAll('.p-empty'),function(e){e.hidden=true});
+    [].forEach.call(document.querySelectorAll('.p-full'),function(e){e.hidden=false});
+    PARTNERS.forEach(function(p){
+      var d=document.createElement('div');d.className='p-slot live reveal';
+      var i=document.createElement('img');i.src=p.logo;i.alt=p.name;d.appendChild(i);grid.appendChild(d);
+    });
+  }else{
+    for(var k=0;k<4;k++){
+      var d=document.createElement('div');d.className='p-slot reveal';
+      d.innerHTML='<div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span data-en="Soon">Yakında</span></div>';
+      grid.appendChild(d);
+    }
+  }
+
+  var MSG={
+    tr:{need:'Lütfen zorunlu alanları doldur ve aydınlatma metnini onayla.',mail:'Lütfen geçerli bir e-posta gir.',fail:'Gönderilemedi. Lütfen necatcd@gmail.com adresine yaz.',sending:'Gönderiliyor…'},
+    en:{need:'Please fill in the required fields and accept the privacy notice.',mail:'Please enter a valid email.',fail:'Could not send. Please email necatcd@gmail.com.',sending:'Sending…'}
+  };
+  var lang='tr';
+  var els=[].slice.call(document.querySelectorAll('[data-en]'));
+  els.forEach(function(e){e.setAttribute('data-tr',e.textContent)});
+  var btns=[].slice.call(document.querySelectorAll('.lang button'));
+  function setLang(l){
+    els.forEach(function(e){e.textContent=e.getAttribute(l==='en'?'data-en':'data-tr')});
+    [].forEach.call(document.querySelectorAll('[data-en-ph]'),function(e){
+      if(!e.hasAttribute('data-tr-ph'))e.setAttribute('data-tr-ph',e.placeholder);
+      e.placeholder=e.getAttribute(l==='en'?'data-en-ph':'data-tr-ph');
+    });
+    document.documentElement.lang=l;
+    btns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l)});
+    lang=l;msg.textContent='';
+    try{localStorage.setItem('cx-lang',l)}catch(e){}
+  }
+
+  /* FORM */
+  var form=document.getElementById('cxForm'),msg=document.getElementById('formMsg'),done=document.getElementById('formDone');
+  function setType(t){
+    document.getElementById({takim:'t-t',menajer:'t-m'}[t]||'t-y').checked=true;
+    [].forEach.call(document.querySelectorAll('[data-grp]'),function(g){
+      var on=g.getAttribute('data-grp')===t;g.hidden=!on;
+      [].forEach.call(g.querySelectorAll('[data-req]'),function(f){f.required=on});
+    });
+  }
+  [].forEach.call(document.querySelectorAll('input[name=tur]'),function(r){
+    r.addEventListener('change',function(){setType({'t-t':'takim','t-m':'menajer'}[r.id]||'yayinci')});
+  });
+  [].forEach.call(document.querySelectorAll('[data-pick]'),function(a){
+    a.addEventListener('click',function(){setType(a.getAttribute('data-pick'))});
+  });
+  setType('yayinci');
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    msg.className='form-msg';
+    if(!form.checkValidity()){
+      var bad=form.querySelector(':invalid');
+      msg.textContent=(bad&&bad.type==='email'&&bad.value)?MSG[lang].mail:MSG[lang].need;
+      msg.classList.add('err');if(bad)bad.focus();return;
+    }
+    var btn=form.querySelector('.submit');btn.disabled=true;msg.textContent=MSG[lang].sending;
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+      .then(function(r){if(!r.ok)throw 0;form.hidden=true;done.hidden=false})
+      .catch(function(){msg.textContent=MSG[lang].fail;msg.classList.add('err')})
+      .then(function(){btn.disabled=false});
+  });
+
+  var dlg=document.getElementById('kvkkDlg');
+  document.getElementById('kvkkOpen').addEventListener('click',function(){dlg.showModal?dlg.showModal():dlg.setAttribute('open','')});
+  document.getElementById('kvkkClose').addEventListener('click',function(){dlg.close?dlg.close():dlg.removeAttribute('open')});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+  btns.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'))})});
+  var saved=null;try{saved=localStorage.getItem('cx-lang')}catch(e){}
+  setLang(saved||((navigator.language||'tr').toLowerCase().indexOf('tr')===0?'tr':'en'));
+
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(en){
+    en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}});
+  },{threshold:.12}):null;
+  [].forEach.call(document.querySelectorAll('.reveal'),function(r){io?io.observe(r):r.classList.add('in')});
+})();
+</script>
+</body>
+</html>
